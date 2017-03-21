@@ -319,16 +319,16 @@ public class bluetooth_activity extends AppCompatActivity {
 	public static void WriteToBTDevice(String message) {
 		String s = new String("\r\n");
 		byte[] msgBuffer = message.getBytes();
-		byte[] newline = s.getBytes();
+		//byte[] newline = s.getBytes();
 
 		try {
 			mmOutStream.write(msgBuffer);
-			mmOutStream.write(newline);
+			//mmOutStream.write(newline);
 		} catch (IOException e) {
 		}
 	}
 
-	public String ReadFromBTDevice() {
+	public static String ReadFromBTDevice() {
 		byte c;
 		String s = new String("");
 
@@ -346,6 +346,10 @@ public class bluetooth_activity extends AppCompatActivity {
 			return new String("-- No Response --");
 		}
 		return s;
+	}
+	
+	public static WriteToBTDeviceAsync(String message) {
+		new SendCommandAsync().execute(message);
 	}
 
 }
