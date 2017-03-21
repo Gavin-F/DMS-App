@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Module2</string>
+    <string name="bluetooth_devices">Bluetooth Devices</string>
+    <string name="touch_to_pair">Touch to pair</string>
+    <string name="cur_connected_device">Currently Connected Device:</string>
+    <string name="unpaired">UNPAIRED</string>
+    <string name="paired_devices">Paired</string>
+    <string name="discovered_devices">Discovered</string>
+</resources>
