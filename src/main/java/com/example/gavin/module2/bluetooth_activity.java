@@ -348,7 +348,7 @@ public class bluetooth_activity extends AppCompatActivity {
 		return s;
 	}
 	
-	public static WriteToBTDeviceAsync(String message) {
+	public static void WriteToBTDeviceAsync(String message) {
 		new SendCommandAsync().execute(message);
 	}
 

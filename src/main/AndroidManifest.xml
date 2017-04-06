@@ -26,6 +26,20 @@
         </activity>
         <activity android:name=".change_message">
         </activity>
+        <activity android:name=".Scheduling">
+        </activity>
+        <activity android:name=".ChangePresets">
+        </activity>
+        <activity android:name=".ChangeMessagePresets">
+        </activity>
+        <activity android:name=".ChangePinPresets">
+        </activity>
+        <activity android:name=".NewPinPresets">
+        </activity>
+        <activity android:name=".SchedulingMessage">
+        </activity>
+        <activity android:name=".SchedulingPin">
+        </activity>
     </application>
 
 </manifest>

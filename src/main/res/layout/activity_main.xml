@@ -18,14 +18,23 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="Lock"
+            android:text="Unlock"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/lock_unlock_button"
             android:layout_weight="1"
-            android:onClick="onClickLock" />
+            android:onClick="onClickHighlight" />
 
     </LinearLayout>
+
+    <TextView
+        android:text="Change Message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView7"
+        android:textSize="18sp"
+        android:textAlignment="center"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -33,13 +42,56 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="Change Message"
+            android:text="1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/change_message_button"
+            android:id="@+id/message_button1"
             android:layout_weight="1"
-            android:onClick="onClickChangeMessage" />
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_button2"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_button3"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_button4"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="Custom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_buttonc"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight"
+            android:textSize="11sp" />
+
     </LinearLayout>
+
+    <TextView
+        android:text="Change Pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView10"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="normal|bold" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -47,12 +99,45 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:text="Change Pin"
+            android:text="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/change_pin_button"
+            android:id="@+id/pin_button1"
             android:layout_weight="1"
-            android:onClick="onClickChangePin" />
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin_button2"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin_button3"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin_button4"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight" />
+
+        <Button
+            android:text="custom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/pin_buttonc"
+            android:layout_weight="1"
+            android:onClick="onClickHighlight"
+            android:textSize="11sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -65,7 +150,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/current_message_label"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textStyle="normal|bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -78,6 +164,115 @@
             android:id="@+id/current_message"
             android:layout_weight="1"
             android:layout_width="fill_parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Current Pin:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_pin_label"
+            android:layout_weight="1"
+            android:textStyle="normal|bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_pin"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Lock Status:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lock_status_label"
+            android:layout_weight="1"
+            android:textStyle="normal|bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lock_status"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Door Status:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/door_status_label"
+            android:layout_weight="1"
+            android:textStyle="normal|bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/door_status"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:text="Set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/set_button"
+            android:layout_weight="1"
+            android:onClick="onClickSet" />
+
+        <Button
+            android:text="Set With time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/set_with_time_button"
+            android:layout_weight="1"
+            android:textSize="13sp"
+            android:onClick="onClickSetWithTime" />
+
+        <Button
+            android:text="Change Presets"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/change_preset_button"
+            android:layout_weight="1"
+            android:onClick="onClickChangePresets" />
     </LinearLayout>
 
 </LinearLayout>

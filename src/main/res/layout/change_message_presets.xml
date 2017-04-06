@@ -11,8 +11,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_gravity="center"
     android:gravity="top"
-    tools:context="com.example.gavin.module2.change_message">
+    tools:context="com.example.gavin.module2.ChangeMessagePresets">
 
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Current Preset Message:"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/message_preset_label"
+            android:layout_weight="1"
+            android:textStyle="normal|bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/current_preset_message"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -20,7 +46,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Message:"
+            android:text="New Message:"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/message_label"
@@ -38,7 +64,7 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             android:ems="10"
-            android:id="@+id/message_input"
+            android:id="@+id/message_preset_input"
             android:layout_weight="1"
             android:imeOptions="actionDone"
             android:maxLines="1"

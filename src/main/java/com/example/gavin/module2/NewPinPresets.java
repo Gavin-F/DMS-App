@@ -12,21 +12,20 @@ import android.widget.TextView;
  * Created by Gavin on 2017-03-15.
  */
 
-public class new_pin extends AppCompatActivity {
+public class NewPinPresets extends AppCompatActivity {
     private TextView entered_pin, too_short;
     private String display_entered_pin = "";
     private String display_too_short = "";
-    private String old_pin;
-    private String key;
+    private String number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_pin);
+        setContentView(R.layout.new_pin_presets);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-            old_pin = extras.getString("old pin");
-            key = extras.getString("key");
+            number = extras.getString("pin number");
+
         }
         entered_pin = (TextView)findViewById(R.id.new_pin_input);
         too_short = (TextView)findViewById(R.id.too_short);
@@ -53,32 +52,29 @@ public class new_pin extends AppCompatActivity {
 
     public void onClickEnter(View v) {
         Button b = (Button) v;
-        if (display_entered_pin.equalsIgnoreCase(old_pin)) {
-            display_too_short = "Pin cannot be the same as old Pin";
-            updatePin();
-        }
-        else if (display_entered_pin.length() < 4){
+        if (display_entered_pin.length() < 4){
             display_too_short = "Pin is too short";
             updatePin();
         }
         else {
-            if (key != null) {
-                if (key.equalsIgnoreCase("pinC")) {
-                    Intent myIntent = new Intent(new_pin.this, SchedulingPin.class);
-                    myIntent.putExtra("key", key);
-                    myIntent.putExtra("new pin", display_entered_pin); //Optional parameters
-                    startActivity(myIntent);
-                }
+            // change the pin and go back to menu
+            Log.d("new pin", display_entered_pin);
+            if (number.equalsIgnoreCase("1")) {
+                bluetooth_activity.WriteToBTDeviceAsync("w"+display_entered_pin);
             }
-            else {
-                // change the pin and go back to menu
-                Log.d("new pin", display_entered_pin);
-                Intent myIntent = new Intent(new_pin.this, MainActivity.class);
-                //myIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-                myIntent.putExtra("new pin", display_entered_pin); //Optional parameters
-                startActivity(myIntent);
+            else if (number.equalsIgnoreCase("2")) {
+                bluetooth_activity.WriteToBTDeviceAsync("x"+display_entered_pin);
             }
+            else if (number.equalsIgnoreCase("3")) {
+                bluetooth_activity.WriteToBTDeviceAsync("y"+display_entered_pin);
+            }
+            else if (number.equalsIgnoreCase("4")) {
+                bluetooth_activity.WriteToBTDeviceAsync("z"+display_entered_pin);
+            }
+            Intent myIntent = new Intent(NewPinPresets.this, MainActivity.class);
+            myIntent.putExtra("preset changed", "Pin");
+            myIntent.putExtra("number", number);
+            startActivity(myIntent);
         }
     }
-
 }

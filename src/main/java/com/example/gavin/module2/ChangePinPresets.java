@@ -12,21 +12,21 @@ import android.widget.TextView;
  * Created by Gavin on 2017-03-15.
  */
 
-public class change_pin extends AppCompatActivity {
+public class ChangePinPresets extends AppCompatActivity {
     private TextView entered_pin, wrong_pin;
     private String display_entered_pin = "";
     private String display_wrong_pin = "";
     private String pin;
-    private String key;
+    private String number;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.change_pin);
+        setContentView(R.layout.change_pin_presets);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
+            number = extras.getString("pin number");
             pin = extras.getString("pin");
-            key = extras.getString("key");
         }
         entered_pin = (TextView)findViewById(R.id.old_pin_input);
         wrong_pin = (TextView)findViewById(R.id.wrong_password);
@@ -54,20 +54,11 @@ public class change_pin extends AppCompatActivity {
     public void onClickEnter(View v) {
         Button b = (Button) v;
         if (display_entered_pin.equalsIgnoreCase(pin)) {
-            if (key != null ) {
-                if (key.equalsIgnoreCase("pinC")) {
-                    Intent myIntent = new Intent(change_pin.this, new_pin.class);
-                    myIntent.putExtra("old pin", pin);
-                    myIntent.putExtra("key", key);
-                    startActivity(myIntent);
-                }
-            }
-            else {
-                // pin is correct
-                Intent myIntent = new Intent(change_pin.this, new_pin.class);
-                myIntent.putExtra("old pin", pin);
-                startActivity(myIntent);
-            }
+            // pin is correct
+            Intent myIntent = new Intent(ChangePinPresets.this, NewPinPresets.class);
+            myIntent.putExtra("pin number", number);
+            Log.d("number", number);
+            startActivity(myIntent);
         }
         else {
             Log.d("wrong pin", display_entered_pin);

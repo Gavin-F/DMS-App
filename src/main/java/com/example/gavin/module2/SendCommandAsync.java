@@ -1,4 +1,4 @@
-package com.example.bluetoothproject;
+package com.example.gavin.module2;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,10 +12,10 @@ public class SendCommandAsync extends AsyncTask<String, Integer, Integer> {
 
 	@Override
 	protected Integer doInBackground(String... command_array){
-		MainActivity.WriteToBTDevice("(");
+		bluetooth_activity.WriteToBTDevice("(");
 
 		while(true){
-			String s = MainActivity.ReadFromBTDevice();
+			String s = bluetooth_activity.ReadFromBTDevice();
 			Log.i("USER_TAG", s);
 			if(s.equalsIgnoreCase("(")) break;
 			try{
@@ -27,7 +27,7 @@ public class SendCommandAsync extends AsyncTask<String, Integer, Integer> {
 			}
 		}
 		Log.i("USER_TAG", command_array[0]);
-		MainActivity.WriteToBTDevice(command_array[0] + ")");
+		bluetooth_activity.WriteToBTDevice(command_array[0] + ")");
 		return 0;
 	}
 }
