@@ -58,7 +58,7 @@ public class SchedulingPin extends AppCompatActivity {
         Intent myIntent = new Intent(SchedulingPin.this, MainActivity.class);
         myIntent.putExtra("which", "Pin");
         myIntent.putExtra("preset time", hour + ":" + minute_str);
-        //bluetooth_activity.WriteToBTDeviceAsync();
+        bluetooth_activity.WriteToBTDeviceAsync("j0"+time+new_pin);
         startActivity(myIntent);
     }
 

@@ -1,5 +1,6 @@
 package com.example.gavin.module2;
 
+import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.SystemClock;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -178,6 +180,11 @@ public class bluetooth_activity extends AppCompatActivity {
 		// now start scanning for new devices. The broadcast receiver
 		// we wrote earlier will be called each time we discover a new device
 		// don't make this call if you only want to show paired devices
+
+		int MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION = 1;
+		ActivityCompat.requestPermissions(this,
+				new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
+				MY_PERMISSIONS_REQUEST_ACCESS_COARSE_LOCATION);
 		mBluetoothAdapter.startDiscovery();
 
 		if(myDiscoveredDevicesStringArray.isEmpty()) Log.i("USER_LOG", "NO DISECOVERED DEVICES");
@@ -216,7 +223,7 @@ public class bluetooth_activity extends AppCompatActivity {
 				closeConnection(); // user defined fn to close streams (Page23)
 
 			CreateSerialBluetoothDeviceSocket(Paireddevices.get(position));
-			ConnectToSerialBlueToothDevice(); // user defined fn
+			ConnectToSerialBlueToothDevice(position); // user defined fn
 
 			// update the view of discovered devices (if required)
 			myPairedArrayAdapter.notifyDataSetChanged();
@@ -241,13 +248,10 @@ public class bluetooth_activity extends AppCompatActivity {
 			// get the selected bluetooth device based on list view position & connect
 			// to it see pages 24 and 25
 			CreateSerialBluetoothDeviceSocket(Discovereddevices.get(position));
-			ConnectToSerialBlueToothDevice(); // user defined fn
+			ConnectToSerialBlueToothDevice(position); // user defined fn
 
 			// update the view of discovered devices (if required)
 			myDiscoveredArrayAdapter.notifyDataSetChanged();
-
-			TextView connectedDeviceText = (TextView) findViewById(R.id.textView6);
-			connectedDeviceText.setText(myPairedDevicesStringArray.get(position));
 		}
 	};
 
@@ -286,13 +290,16 @@ public class bluetooth_activity extends AppCompatActivity {
 		}
 	}
 
-	public void ConnectToSerialBlueToothDevice() {
+	public void ConnectToSerialBlueToothDevice(int position) {
 		// Cancel discovery because it will slow down the connection
 		mBluetoothAdapter.cancelDiscovery();
 		try {
 			// Attempt connection to the device through the socket.
 			mmSocket.connect();
 			Toast.makeText(context, "Connection Made", Toast.LENGTH_LONG).show();
+
+			TextView connectedDeviceText = (TextView) findViewById(R.id.textView6);
+			connectedDeviceText.setText(myPairedDevicesStringArray.get(position));
 		} catch (IOException connectException) {
 			Toast.makeText(context, "Connection Failed", Toast.LENGTH_LONG).show();
 			return;

@@ -35,4 +35,11 @@ public class ChangePresets extends AppCompatActivity {
         myIntent.putExtra("pin", pin);
         startActivity(myIntent);
     }
+
+    public void onClickChangeBluetoothPin (View v) {
+        Button b = (Button) v;
+        Intent myIntent = new Intent(ChangePresets.this, new_pin.class);
+        myIntent.putExtra("which","BT");
+        startActivity(myIntent);
+    }
 }

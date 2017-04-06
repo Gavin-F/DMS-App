@@ -59,43 +59,44 @@ public class Scheduling extends AppCompatActivity{
 
         String which = "";
         if (key.equalsIgnoreCase("pin1")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("j1"+time);
             which = "Pin";
         }
         else if (key.equalsIgnoreCase("pin2")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("j2"+time);
             which = "Pin";
         }
         else if (key.equalsIgnoreCase("pin3")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("j3"+time);
             which = "Pin";
         }
         else if (key.equalsIgnoreCase("pin4")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("j4"+time);
             which = "Pin";
         }
         else if (key.equalsIgnoreCase("message1")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("i1"+time);
             which = "Message";
         }
         else if (key.equalsIgnoreCase("message2")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("i2"+time);
             which = "Message";
         }
         else if (key.equalsIgnoreCase("message3")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("i3"+time);
             which = "Message";
         }
         else if (key.equalsIgnoreCase("message4")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("i4"+time);
             which = "Message";
         }
         else if (key.equalsIgnoreCase("lock")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("l"+time);
             which = "lock";
+            Log.d("lock",time);
         }
         else if (key.equalsIgnoreCase("unlock")) {
-            //bluetooth_activity.WriteToBTDeviceAsync("");
+            bluetooth_activity.WriteToBTDeviceAsync("u"+time);
             which = "unlock";
         }
         myIntent.putExtra("which", which);

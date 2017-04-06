@@ -54,7 +54,7 @@ public class SchedulingMessage extends AppCompatActivity {
         myIntent.putExtra("which", "Message");
         myIntent.putExtra("preset time", hour + ":" + minute_str);
         Log.d("message",message);
-        //bluetooth_activity.WriteToBTDeviceAsync("");
+        bluetooth_activity.WriteToBTDeviceAsync("i0"+time+message);
         startActivity(myIntent);
     }
 }

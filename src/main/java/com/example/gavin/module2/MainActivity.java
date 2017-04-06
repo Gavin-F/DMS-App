@@ -47,15 +47,17 @@ public class MainActivity extends AppCompatActivity {
     Button message4;
     Button messageC;
     Button lock_unlock;
+    Button doorbell_1;
+    Button doorbell_2;
+    Button set;
+    Button set_with_time;
+    Button change_presets;
     int selected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        //bluetooth_activity.WriteToBTDeviceAsync("l");
-
         current_message = (TextView)findViewById(R.id.current_message);
         current_pin = (TextView)findViewById(R.id.current_pin);
         lock_status = (TextView)findViewById(R.id.lock_status);
@@ -72,6 +74,15 @@ public class MainActivity extends AppCompatActivity {
         message4 = (Button)findViewById(R.id.message_button4);
         messageC = (Button)findViewById(R.id.message_buttonc);
         lock_unlock = (Button)findViewById(R.id.lock_unlock_button);
+        doorbell_1 = (Button)findViewById(R.id.doorbell1);
+        doorbell_2 = (Button)findViewById(R.id.doorbell2);
+        set = (Button)findViewById(R.id.set_button);
+        set_with_time = (Button)findViewById(R.id.set_with_time_button);
+        change_presets = (Button)findViewById(R.id.change_preset_button);
+
+        set.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+        set_with_time.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+        change_presets.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -159,7 +170,11 @@ public class MainActivity extends AppCompatActivity {
         message3.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
         message4.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
         messageC.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
+
         lock_unlock.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
+
+        doorbell_1.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
+        doorbell_2.getBackground().setColorFilter(Color.LTGRAY, PorterDuff.Mode.MULTIPLY);
     }
 
     public void onClickSet(View v) {
@@ -238,6 +253,18 @@ public class MainActivity extends AppCompatActivity {
                 toast.show();
                 bluetooth_activity.WriteToBTDeviceAsync("u");
             }
+        }
+        else if (selected == R.id.doorbell1) {
+            bluetooth_activity.WriteToBTDeviceAsync("d1");
+            toast_text = "Doorbell Changed";
+            Toast toast = Toast.makeText(MainActivity.this,toast_text, duration);
+            toast.show();
+        }
+        else if (selected == R.id.doorbell2) {
+            bluetooth_activity.WriteToBTDeviceAsync("d2");
+            toast_text = "Doorbell Changed";
+            Toast toast = Toast.makeText(MainActivity.this,toast_text, duration);
+            toast.show();
         }
         updateData();
     }

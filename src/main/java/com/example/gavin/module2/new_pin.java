@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by Gavin on 2017-03-15.
@@ -17,7 +18,7 @@ public class new_pin extends AppCompatActivity {
     private String display_entered_pin = "";
     private String display_too_short = "";
     private String old_pin;
-    private String key;
+    private String key, which;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class new_pin extends AppCompatActivity {
         if (extras != null) {
             old_pin = extras.getString("old pin");
             key = extras.getString("key");
+            which = extras.getString("which");
         }
         entered_pin = (TextView)findViewById(R.id.new_pin_input);
         too_short = (TextView)findViewById(R.id.too_short);
@@ -67,6 +69,17 @@ public class new_pin extends AppCompatActivity {
                     Intent myIntent = new Intent(new_pin.this, SchedulingPin.class);
                     myIntent.putExtra("key", key);
                     myIntent.putExtra("new pin", display_entered_pin); //Optional parameters
+                    startActivity(myIntent);
+                }
+            }
+            else if (which != null) {
+                if (which.equalsIgnoreCase("bt")) {
+                    Log.d("bluetooth_pin", display_entered_pin);
+                    Intent myIntent = new Intent(new_pin.this,  MainActivity.class);
+                    bluetooth_activity.WriteToBTDeviceAsync("b"+display_entered_pin);
+                    String toast_text = "Bluetooth Pin Changed";
+                    Toast toast = Toast.makeText(new_pin.this,toast_text, Toast.LENGTH_SHORT);
+                    toast.show();
                     startActivity(myIntent);
                 }
             }
